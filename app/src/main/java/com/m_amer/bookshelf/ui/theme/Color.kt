@@ -1,4 +1,4 @@
-package com.M_Amer.bookshelf.ui.theme
+package com.m_amer.bookshelf.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
