@@ -145,7 +145,7 @@ private fun ReadingItem(book: Book, onClick: () -> Unit) {
         ?.split("/")
         ?.minByOrNull { it.length }
         ?.trim()
-        .takeIf { !it.isNullOrBlank() } ?: "Unavailable"
+        .takeIf { !it.isNullOrBlank() } ?: stringResource(R.string.unavailable)
 
     book.imageLinks.thumbnail.let { rawUrl ->
         Reading(

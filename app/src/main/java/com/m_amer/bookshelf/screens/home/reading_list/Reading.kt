@@ -33,6 +33,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
@@ -40,6 +41,7 @@ import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
 import coil3.request.ImageRequest
 import coil3.request.crossfade
+import com.m_amer.bookshelf.R
 
 @Composable
 fun Reading(
@@ -115,7 +117,7 @@ private fun BookImage(url: String, onClick: () -> Unit) {
                 .data(url)
                 .crossfade(true)
                 .build(),
-            contentDescription = "Book cover",
+            contentDescription = stringResource(R.string.book_cover),
             contentScale = ContentScale.Crop,
             modifier = Modifier.matchParentSize(),
             onSuccess = { isLoading = false },
@@ -139,7 +141,7 @@ private fun StarRating(rating: Float, maxStars: Int = 5, starSize: Dp = 14.dp) {
         repeat(fullStars) {
             Icon(
                 imageVector = Icons.Rounded.Star,
-                contentDescription = null,
+                contentDescription = stringResource(R.string.star),
                 modifier = Modifier.size(starSize),
                 tint = MaterialTheme.colorScheme.primary
             )
@@ -147,7 +149,7 @@ private fun StarRating(rating: Float, maxStars: Int = 5, starSize: Dp = 14.dp) {
         if (hasHalf && fullStars < maxStars) {
             Icon(
                 imageVector = Icons.AutoMirrored.Rounded.StarHalf,
-                contentDescription = null,
+                contentDescription = stringResource(R.string.starhalf),
                 modifier = Modifier.size(starSize),
                 tint = MaterialTheme.colorScheme.primary
             )
@@ -156,7 +158,7 @@ private fun StarRating(rating: Float, maxStars: Int = 5, starSize: Dp = 14.dp) {
         repeat(emptyStars) {
             Icon(
                 imageVector = Icons.Rounded.Star,
-                contentDescription = null,
+                contentDescription = stringResource(R.string.star),
                 modifier = Modifier.size(starSize),
                 tint = MaterialTheme.colorScheme.onSurfaceVariant
             )
@@ -173,7 +175,7 @@ private fun ReadMoreButton(onClick: () -> Unit) {
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            text = "Read more",
+            text = stringResource(R.string.read_more),
             style = MaterialTheme.typography.labelSmall,
             color = MaterialTheme.colorScheme.secondary
         )

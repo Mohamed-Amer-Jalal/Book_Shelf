@@ -31,6 +31,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
@@ -66,8 +67,8 @@ fun MainCard(
         Box {
             // خلفية الكرت
             Image(
-                painter = painterResource(id = R.drawable.card),
-                contentDescription = null,
+                painter = painterResource(R.drawable.card),
+                contentDescription = stringResource(R.string.card),
                 modifier = Modifier.matchParentSize(),
                 contentScale = ContentScale.Crop
             )
@@ -79,7 +80,7 @@ fun MainCard(
                     .padding(vertical = 16.dp)
             ) {
                 Text(
-                    text = "Track your",
+                    text = stringResource(R.string.track_your),
                     fontFamily = poppinsFamily,
                     fontSize = 23.sp,
                     fontWeight = FontWeight.SemiBold,
@@ -87,7 +88,7 @@ fun MainCard(
                     textAlign = TextAlign.Center
                 )
                 Text(
-                    text = "reading activity",
+                    text = stringResource(R.string.reading_activity),
                     fontFamily = poppinsFamily,
                     fontSize = 23.sp,
                     fontWeight = FontWeight.SemiBold,
@@ -143,7 +144,7 @@ fun MainCard(
                                     color = Color.White.copy(alpha = 0.85f)
                                 )
                                 Text(
-                                    text = "Continue reading",
+                                    text = stringResource(R.string.continue_reading),
                                     fontFamily = poppinsFamily,
                                     fontSize = 12.sp,
                                     color = Color.White.copy(alpha = 0.7f)
@@ -176,7 +177,7 @@ private fun BookImage(
                     .data(imageUrl.replace("http://", "https://"))
                     .crossfade(true)
                     .build(),
-                contentDescription = "Book cover",
+                contentDescription = stringResource(R.string.book_cover),
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.clip(CircleShape),
                 onLoading = { onLoading() },
@@ -186,7 +187,7 @@ private fun BookImage(
         } else {
             Image(
                 painter = painterResource(id = R.drawable.emptyshelf),
-                contentDescription = "Empty shelf",
+                contentDescription = stringResource(R.string.empty_shelf),
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.clip(CircleShape)
             )

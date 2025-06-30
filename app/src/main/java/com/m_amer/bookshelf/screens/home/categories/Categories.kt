@@ -9,10 +9,12 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.m_amer.bookshelf.R
 import com.m_amer.bookshelf.data.categories
 import com.m_amer.bookshelf.navigation.BookShelfScreens
 import com.m_amer.bookshelf.ui.theme.poppinsFamily
@@ -20,7 +22,7 @@ import com.m_amer.bookshelf.ui.theme.poppinsFamily
 @Composable
 fun Categories(navController: NavController) {
     Text(
-        text = "Categories",
+        text = stringResource(R.string.categories),
         fontFamily = poppinsFamily,
         fontWeight = FontWeight.Medium,
         fontSize = 16.sp,
@@ -80,7 +82,6 @@ fun CategoriesContent(
         }
     }
 }
-
 
 */
 /**معاينة الواجهة بدون NavController *//*

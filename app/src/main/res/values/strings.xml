@@ -5,4 +5,15 @@
     <string name="empty_shelf">Empty Shelf</string>
     <string name="no_current_reads">Uh oh, you have no current reads!</string>
     <string name="explore_books">Explore books and add them to your reading list to show them here</string>
+    <string name="card">Card</string>
+    <string name="track_your">Track your</string>
+    <string name="reading_activity">reading activity</string>
+    <string name="continue_reading">Continue reading</string>
+    <string name="book_cover">Book cover</string>
+    <string name="categories">Categories</string>
+    <string name="category">Category</string>
+    <string name="starhalf">StarHalf</string>
+    <string name="star">Star</string>
+    <string name="read_more">Read more</string>
+    <string name="unavailable">Unavailable</string>
 </resources>
