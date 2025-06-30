@@ -8,18 +8,35 @@ import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+    background = Color.Black,
+    onBackground = DarkWhite,
+    primary = Pink200,
+    surface = Color.Black,
+    secondary = Gray,
+    onSecondaryContainer = DarkWhite,
+    tertiary = DarkWhite,
+    primaryContainer = Color.Black,
+    onTertiaryContainer = Gray700.copy(alpha = 0.8f),
+    surfaceVariant = DarkWhite,
+    outline = iconColorDarkMode
 )
 
 private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
+    background = Color.White,
+    onBackground = Gray700.copy(alpha = 0.8f),
+    primary = Pink500,
+    surface = Color.White,
+    secondary = Pink200,
+    onSecondaryContainer = Color.White,
+    tertiary = Pink700,
+    primaryContainer = Pink500,
+    onTertiaryContainer = Gray700.copy(alpha = 0.1f),
+    surfaceVariant = Color.White,
+    outline = iconColor
 )
 
 @Composable
@@ -41,6 +58,7 @@ fun BookShelfTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
+        shapes = Shapes,
         content = content
     )
 }

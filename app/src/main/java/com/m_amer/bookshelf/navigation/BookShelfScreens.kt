@@ -17,13 +17,4 @@ enum class BookShelfScreens(private val routeTemplate: String) {
         }
         return route
     }
-
-    companion object {
-        fun fromRoute(route: String): BookShelfScreens {
-            val base = route.substringBefore("/")
-            return entries.firstOrNull {
-                it.routeTemplate.substringBefore("/") == base
-            } ?: throw IllegalArgumentException("Route '$route' is not recognized")
-        }
-    }
 }
