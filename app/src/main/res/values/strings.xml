@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">BookShelf</string>
     <string name="splash_book">Splash Book</string>
+    <string name="my_reading_list">My Reading List</string>
+    <string name="empty_shelf">Empty Shelf</string>
+    <string name="no_current_reads">Uh oh, you have no current reads!</string>
+    <string name="explore_books">Explore books and add them to your reading list to show them here</string>
 </resources>

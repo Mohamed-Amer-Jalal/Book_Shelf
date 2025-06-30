@@ -41,7 +41,6 @@ fun BookShelfTheme(
 
     MaterialTheme(
         colorScheme = colorScheme,
-        typography = Typography,
         content = content
     )
 }

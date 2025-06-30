@@ -40,12 +40,10 @@ android {
     }
 }
 
-// ADD or MODIFY this top-level kotlin block:
 kotlin {
     compilerOptions {
         jvmTarget.set(JvmTarget.JVM_11)
-        // You can set other Kotlin compiler options here if needed, for example:
-        // freeCompilerArgs.add("-X opt-in=kotlin.RequiresOptIn")
+        freeCompilerArgs.add("-XXLanguage:+PropertyParamAnnotationDefaultTargetMode")
     }
 }
 
@@ -60,6 +58,8 @@ dependencies {
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.navigation.runtime.android)
+    implementation(libs.firebase.firestore.ktx)
+    implementation(libs.androidx.navigation.compose.jvmstubs)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -67,4 +67,9 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    implementation(libs.androidx.material.icons.core)
+    implementation(libs.androidx.material.icons.extended)
+
+    implementation(libs.coil.compose)
 }
