@@ -133,7 +133,8 @@ private fun ReadingListContent(
             ReadingItem(
                 book = book,
                 onClick = {
-                    navController.navigate(BookShelfScreens.BookScreen.name + "/${book}")
+                    val route = "${BookShelfScreens.BookScreen.name.lowercase()}/${book.bookID}"
+                    navController.navigate(route)
                 }
             )
         }
