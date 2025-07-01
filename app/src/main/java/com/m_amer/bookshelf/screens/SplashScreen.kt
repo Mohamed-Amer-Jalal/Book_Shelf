@@ -48,12 +48,8 @@ fun SplashScreen(
         }
     }
 
-    Surface(
-        modifier = modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background
-    ) {
-        Box(
-            modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center
-        ) {
+    Surface(modifier = modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
+        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
             Image(
                 painter = painterResource(R.drawable.book),
                 contentDescription = stringResource(R.string.splash_book),

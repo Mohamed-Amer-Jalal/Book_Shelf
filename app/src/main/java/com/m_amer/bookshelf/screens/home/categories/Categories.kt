@@ -1,7 +1,9 @@
 package com.m_amer.bookshelf.screens.home.categories
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -11,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -27,10 +30,8 @@ fun Categories(navController: NavController) {
         fontWeight = FontWeight.Medium,
         fontSize = 16.sp,
         color = MaterialTheme.colorScheme.onBackground,
-        modifier = Modifier
-            .padding(top = 10.dp, start = 20.dp, end = 20.dp)
+        modifier = Modifier.padding(top = 10.dp, start = 20.dp, end = 20.dp)
     )
-
     val keysList = categories.keys.toList()
 
     LazyRow(
@@ -51,9 +52,8 @@ fun Categories(navController: NavController) {
     }
 }
 
-/*
 @Composable
-fun CategoriesContent(
+private fun CategoriesContent(
     categoriesMap: Map<String, Int>,
     onCategoryClick: (String) -> Unit,
     modifier: Modifier = Modifier
@@ -83,8 +83,6 @@ fun CategoriesContent(
     }
 }
 
-*/
-/**معاينة الواجهة بدون NavController *//*
 
 @Preview(showBackground = true)
 @Composable
@@ -96,8 +94,6 @@ fun CategoriesPreview() {
     )
     CategoriesContent(
         categoriesMap = sampleCategories,
-        onCategoryClick = { */
-/* no-op for preview *//*
- }
+        onCategoryClick = {  }
     )
-}*/
+}

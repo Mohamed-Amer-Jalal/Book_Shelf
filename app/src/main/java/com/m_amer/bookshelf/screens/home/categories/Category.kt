@@ -25,11 +25,7 @@ import com.m_amer.bookshelf.R
 import com.m_amer.bookshelf.ui.theme.poppinsFamily
 
 @Composable
-fun Category(
-    category: String,
-    image: Int,
-    onClick: () -> Unit
-) {
+fun Category(category: String, image: Int, onClick: () -> Unit) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center,

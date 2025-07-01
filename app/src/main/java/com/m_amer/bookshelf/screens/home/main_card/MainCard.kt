@@ -49,11 +49,7 @@ import com.m_amer.bookshelf.navigation.BookShelfScreens
 import com.m_amer.bookshelf.ui.theme.poppinsFamily
 
 @Composable
-fun MainCard(
-    currentRead: Book,
-    navController: NavController,
-    readingList: List<Book>
-) {
+fun MainCard(currentRead: Book, navController: NavController, readingList: List<Book>) {
     var loading by remember { mutableStateOf(false) }
     val hasReading = readingList.isNotEmpty()
 
@@ -175,15 +171,13 @@ private fun BookImage(
             AsyncImage(
                 model = ImageRequest.Builder(LocalContext.current)
                     .data(imageUrl.replace("http://", "https://"))
-                    .crossfade(true)
-                    .build(),
+                    .crossfade(true).build(),
                 contentDescription = stringResource(R.string.book_cover),
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.clip(CircleShape),
                 onLoading = { onLoading() },
                 onSuccess = { onFinished() },
-                onError = { onFinished() }
-            )
+                onError = { onFinished() })
         } else {
             Image(
                 painter = painterResource(id = R.drawable.emptyshelf),
@@ -207,20 +201,5 @@ fun MainCardPreview() {
     // ننشئ NavController فارغ بدون استخدام rememberNavController()
     val navController = NavController(context)
     val readingList = listOf(currentRead)
-    MainCard(
-        currentRead = currentRead,
-        navController = navController,
-        readingList = readingList
-    )
-}
-
-@Preview
-@Composable
-fun BookImagePreview() {
-    BookImage(
-        hasReading = true,
-        imageUrl = "http://books.google.com/books/content?id=someId&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
-        onLoading = {},
-        onFinished = {}
-    )
+    MainCard(currentRead = currentRead, navController = navController, readingList = readingList)
 }

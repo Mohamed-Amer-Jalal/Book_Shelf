@@ -192,7 +192,7 @@ private fun ReadMoreButton(onClick: () -> Unit) {
 
 @Preview(showBackground = true)
 @Composable
-fun ReadingPreview() {
+private fun ReadingPreview() {
     Reading(
         genre = "Fantasy",
         bookAuthor = "J.K. Rowling",

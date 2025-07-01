@@ -18,7 +18,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color.Companion.Yellow
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -32,6 +31,7 @@ import com.m_amer.bookshelf.R
 import com.m_amer.bookshelf.model.Book
 import com.m_amer.bookshelf.model.ImageLinks
 import com.m_amer.bookshelf.navigation.BookShelfScreens
+import com.m_amer.bookshelf.ui.theme.Yellow
 import com.m_amer.bookshelf.ui.theme.poppinsFamily
 import java.time.LocalDate
 
@@ -47,7 +47,9 @@ fun ReadingList(
 
         when {
             loading -> LoadingView(Modifier.weight(1f))
+
             !loading && readingList.isEmpty() -> EmptyReadingListView(Modifier.weight(1f))
+
             else -> ReadingListContent(
                 readingList = readingList,
                 navController = navController,
@@ -75,12 +77,8 @@ private fun SectionTitle() {
 
 @Composable
 private fun LoadingView(modifier: Modifier = Modifier) {
-    Box(
-        modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center
-    ) {
-        LinearProgressIndicator(
-            modifier = Modifier.fillMaxWidth(0.5f), color = Yellow
-        )
+    Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+        LinearProgressIndicator(modifier = Modifier.fillMaxWidth(0.5f), color = Yellow)
     }
 }
 
@@ -120,31 +118,31 @@ private fun EmptyReadingListView(modifier: Modifier = Modifier) {
 
 @Composable
 private fun ReadingListContent(
-    readingList: List<Book>, navController: NavController, modifier: Modifier = Modifier
+    readingList: List<Book>,
+    navController: NavController,
+    modifier: Modifier = Modifier
 ) {
     val listState = rememberLazyListState()
 
     LazyColumn(
-        state = listState, modifier = modifier, verticalArrangement = Arrangement.spacedBy(15.dp)
+        state = listState,
+        modifier = modifier,
+        verticalArrangement = Arrangement.spacedBy(15.dp)
     ) {
         items(readingList, key = { it.bookID }) { book ->
             ReadingItem(
-                book = book, onClick = {
-                    navController.navigate(
-                        BookShelfScreens.BookScreen.createRoute(book.bookID)
-                    )
-                })
+                book = book,
+                onClick = {
+                    navController.navigate(BookShelfScreens.BookScreen.name + "/${book}")
+                }
+            )
         }
     }
 }
 
 @Composable
 private fun ReadingItem(book: Book, onClick: () -> Unit) {
-    val genre = book.categories
-        .firstOrNull()
-        ?.split("/")
-        ?.minByOrNull { it.length }
-        ?.trim()
+    val genre = book.categories.firstOrNull()?.split("/")?.minByOrNull { it.length }?.trim()
         .takeIf { !it.isNullOrBlank() } ?: stringResource(R.string.unavailable)
 
     book.imageLinks.thumbnail.let { rawUrl ->
@@ -161,7 +159,7 @@ private fun ReadingItem(book: Book, onClick: () -> Unit) {
 
 @Preview(showBackground = true)
 @Composable
-fun ReadingListPreview() {
+private fun ReadingListPreview() {
     val context = LocalContext.current
     // ننشئ NavController فارغ بدون استخدام rememberNavController()
     val navController = NavController(context)
@@ -187,8 +185,7 @@ fun ReadingListPreview() {
             subtitle = "Philosopher's Stone",
             title = "Harry Potter and the Philosopher's Stone",
             searchInfo = ""
-        ),
-        Book(
+        ), Book(
             bookID = "2",
             authors = listOf("George Orwell"),
             averageRating = 4.2,
