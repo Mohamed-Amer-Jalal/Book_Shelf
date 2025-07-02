@@ -51,8 +51,6 @@ import com.m_amer.bookshelf.model.Book
 import com.m_amer.bookshelf.screens.home.categories.Categories
 import com.m_amer.bookshelf.screens.home.main_card.MainCard
 import com.m_amer.bookshelf.screens.home.reading_list.ReadingList
-import com.m_amer.bookshelf.screens.home.store_profileImage.StoreProfileImage
-import com.m_amer.bookshelf.screens.home.store_profileImage.StoreSession
 import com.m_amer.bookshelf.screens.home.top_header.TopHeader
 import kotlinx.coroutines.launch
 

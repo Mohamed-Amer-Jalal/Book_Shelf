@@ -1,4 +1,4 @@
-package com.m_amer.bookshelf.screens.home.store_profileImage
+package com.m_amer.bookshelf.screens.home.home_content
 
 import android.content.Context
 import android.net.Uri
