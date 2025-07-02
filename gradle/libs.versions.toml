@@ -1,11 +1,20 @@
 [versions]
 agp = "8.11.0"
 coilCompose = "3.2.0"
+datastorePreferences = "1.1.7"
+koinAndroidxViewmodel = "3.4.0"
+koinCore = "4.1.0"
+koinAndroid = "4.1.0"
 kotlin = "2.2.0"
 coreKtx = "1.16.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
+ktorClientAndroid = "3.2.0"
+ktorClientContentNegotiation = "3.2.0"
+ktorClientCore = "3.2.0"
+ktorClientLogging = "3.2.0"
+ktorSerializationKotlinxJson = "3.2.0"
 lifecycleRuntimeKtx = "2.9.1"
 activityCompose = "1.10.1"
 composeBom = "2025.06.01"
@@ -13,9 +22,16 @@ materialIconsCore = "..."
 navigationRuntimeAndroid = "2.9.0"
 firebaseFirestoreKtx = "25.1.4"
 navigationComposeJvmstubs = "2.9.0"
+firebaseAuthKtx = "23.2.1"
+datastoreCoreAndroid = "1.1.7"
+datastorePreferencesCoreAndroid = "1.1.7"
+firebaseCrashlyticsBuildtools = "3.0.4"
+constraintlayout = "2.2.1"
+transportRuntime = "4.0.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-datastore-preferences = { module = "androidx.datastore:datastore-preferences", version.ref = "datastorePreferences" }
 androidx-material-icons-core = { module = "androidx.compose.material:material-icons-core", version.ref = "materialIconsCore" }
 androidx-material-icons-extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "materialIconsCore" }
 coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilCompose" }
@@ -35,6 +51,20 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 androidx-navigation-runtime-android = { group = "androidx.navigation", name = "navigation-runtime-android", version.ref = "navigationRuntimeAndroid" }
 firebase-firestore-ktx = { group = "com.google.firebase", name = "firebase-firestore-ktx", version.ref = "firebaseFirestoreKtx" }
 androidx-navigation-compose-jvmstubs = { group = "androidx.navigation", name = "navigation-compose-jvmstubs", version.ref = "navigationComposeJvmstubs" }
+firebase-auth-ktx = { group = "com.google.firebase", name = "firebase-auth-ktx", version.ref = "firebaseAuthKtx" }
+androidx-datastore-core-android = { group = "androidx.datastore", name = "datastore-core-android", version.ref = "datastoreCoreAndroid" }
+androidx-datastore-preferences-core-android = { group = "androidx.datastore", name = "datastore-preferences-core-android", version.ref = "datastorePreferencesCoreAndroid" }
+firebase-crashlytics-buildtools = { group = "com.google.firebase", name = "firebase-crashlytics-buildtools", version.ref = "firebaseCrashlyticsBuildtools" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinAndroid" }
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koinCore" }
+koin-androidx-viewmodel = { module = "io.insert-koin:koin-androidx-viewmodel", version.ref = "koinAndroidxViewmodel" }
+ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktorClientAndroid" }
+ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktorClientContentNegotiation" }
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktorClientCore" }
+ktor-client-logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktorClientLogging" }
+ktor-serialization-kotlinx-json = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktorSerializationKotlinxJson" }
+transport-runtime = { group = "com.google.android.datatransport", name = "transport-runtime", version.ref = "transportRuntime" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

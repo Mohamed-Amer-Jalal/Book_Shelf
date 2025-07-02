@@ -60,6 +60,12 @@ dependencies {
     implementation(libs.androidx.navigation.runtime.android)
     implementation(libs.firebase.firestore.ktx)
     implementation(libs.androidx.navigation.compose.jvmstubs)
+    implementation(libs.firebase.auth.ktx)
+    implementation(libs.androidx.datastore.core.android)
+    implementation(libs.androidx.datastore.preferences.core.android)
+    implementation(libs.firebase.crashlytics.buildtools)
+    implementation(libs.androidx.constraintlayout)
+    implementation(libs.transport.runtime)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -72,4 +78,26 @@ dependencies {
     implementation(libs.androidx.material.icons.extended)
 
     implementation(libs.coil.compose)
+
+    implementation(libs.androidx.datastore.preferences)
+
+    // Ktor core & Android engine
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.android)
+
+    // JSON serialization (Kotlinx)
+    implementation(libs.ktor.serialization.kotlinx.json)
+    implementation(libs.ktor.client.content.negotiation)
+
+    // Optional: Logging
+    implementation(libs.ktor.client.logging)
+
+    // Koin core
+    implementation(libs.koin.core)
+
+    // Koin for Android
+    implementation(libs.koin.android)
+
+    // Optional: Koin AndroidX ViewModel support
+    implementation(libs.koin.androidx.viewmodel)
 }
