@@ -46,9 +46,4 @@ class StoreProfileImage(
     suspend fun saveImageUri(uri: Uri) =
         context.dataStore.edit { preferences -> preferences[USER_IMAGE_KEY] = uri.toString() }
 
-    /**
-     * Clears the saved image URI from DataStore.
-     */
-    suspend fun clearImageUri() =
-        context.dataStore.edit { preferences -> preferences.remove(USER_IMAGE_KEY) }
 }

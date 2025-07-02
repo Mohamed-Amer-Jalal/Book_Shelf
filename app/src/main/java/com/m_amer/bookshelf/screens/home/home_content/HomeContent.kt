@@ -59,7 +59,7 @@ fun HomeContent(
     userName: String?,
     avatarUri: Bitmap?,
     navController: NavController,
-//    searchBookViewModel: SearchBookViewModel,
+    searchBookViewModel: SearchBookViewModel,
     imageDataStore: StoreProfileImage,
     sessionStore: StoreSession,
     readingList: List<Book>,
@@ -112,7 +112,7 @@ fun HomeContent(
         Scaffold(topBar = {
             TopHeader(
                 navController = navController,
-//                viewModel = searchBookViewModel,
+                viewModel = searchBookViewModel,
                 avatar = avatarUri,
                 onProfileClick = { scope.launch { drawerState.open() } })
         }, bottomBar = {

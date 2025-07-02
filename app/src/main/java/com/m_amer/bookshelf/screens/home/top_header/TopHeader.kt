@@ -30,7 +30,7 @@ import com.m_amer.bookshelf.navigation.BookShelfScreens
 @Composable
 fun TopHeader(
     navController: NavController,
-//    viewModel: SearchBookViewModel,
+    viewModel: SearchBookViewModel,
     avatar: Bitmap?,
     onProfileClick: () -> Unit
 ) {
@@ -55,8 +55,8 @@ fun TopHeader(
         // زر البحث
         IconButton(
             onClick = {
-//                viewModel.loading.value = false
-//                viewModel.listOfBooks.value = emptyList()
+                viewModel.loading.value = false
+                viewModel.listOfBooks.value = emptyList()
                 navController.navigate(BookShelfScreens.SearchScreen.name)
             },
             modifier = Modifier
