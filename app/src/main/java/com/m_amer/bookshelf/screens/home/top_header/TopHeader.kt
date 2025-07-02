@@ -20,9 +20,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.asImageBitmap
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import coil3.Bitmap
+import com.m_amer.bookshelf.R
 import com.m_amer.bookshelf.navigation.BookShelfScreens
 
 @Composable
@@ -42,7 +44,7 @@ fun TopHeader(
         // زر الصورة الشخصيّة
         Image(
             bitmap = avatar.asImageBitmap(),
-            contentDescription = "Profile Picture",
+            contentDescription = stringResource(R.string.profile_picture),
             contentScale = ContentScale.Crop,
             modifier = Modifier
                 .size(48.dp)
@@ -68,8 +70,7 @@ fun TopHeader(
             Icon(
                 imageVector = Icons.Filled.Search,
                 contentDescription = "Search",
-                modifier = Modifier
-                    .size(20.dp),
+                modifier = Modifier.size(20.dp),
                 tint = MaterialTheme.colorScheme.onBackground
             )
         }
