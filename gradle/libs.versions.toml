@@ -2,7 +2,6 @@
 agp = "8.11.0"
 coilCompose = "3.2.0"
 datastorePreferences = "1.1.7"
-koinAndroidxViewmodel = "3.4.0"
 koinCore = "4.1.0"
 koinAndroid = "4.1.0"
 kotlin = "2.2.0"
@@ -58,7 +57,6 @@ firebase-crashlytics-buildtools = { group = "com.google.firebase", name = "fireb
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 koin-android = { module = "io.insert-koin:koin-android", version.ref = "koinAndroid" }
 koin-core = { module = "io.insert-koin:koin-core", version.ref = "koinCore" }
-koin-androidx-viewmodel = { module = "io.insert-koin:koin-androidx-viewmodel", version.ref = "koinAndroidxViewmodel" }
 ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktorClientAndroid" }
 ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktorClientContentNegotiation" }
 ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktorClientCore" }

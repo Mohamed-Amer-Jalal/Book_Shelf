@@ -20,6 +20,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -100,3 +102,12 @@ val defaultNavItems = listOf(
     BottomNavItem.Favourites,
     BottomNavItem.Reviews
 )
+
+@Preview
+@Composable
+fun NavBarPreview() {
+    val context = LocalContext.current
+    // ننشئ NavController فارغ بدون استخدام rememberNavController()
+    val navController = NavController(context)
+    NavBar(navController = navController)
+}

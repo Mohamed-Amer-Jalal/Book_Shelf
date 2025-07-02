@@ -97,7 +97,4 @@ dependencies {
 
     // Koin for Android
     implementation(libs.koin.android)
-
-    // Optional: Koin AndroidX ViewModel support
-    implementation(libs.koin.androidx.viewmodel)
 }
