@@ -31,7 +31,7 @@ import com.m_amer.bookshelf.navigation.BookShelfScreens
 fun TopHeader(
     navController: NavController,
     viewModel: SearchBookViewModel,
-    avatar: Bitmap,
+    avatar: Bitmap?,
     onProfileClick: () -> Unit
 ) {
     Row(

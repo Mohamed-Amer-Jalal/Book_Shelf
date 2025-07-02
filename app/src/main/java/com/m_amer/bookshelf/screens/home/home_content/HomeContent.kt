@@ -1,6 +1,7 @@
 package com.m_amer.bookshelf.screens.home.home_content
 
 import android.content.Intent
+import android.graphics.Bitmap
 import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
@@ -44,7 +45,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import coil3.Uri
 import coil3.compose.AsyncImage
 import com.m_amer.bookshelf.R
 import com.m_amer.bookshelf.model.Book
@@ -57,7 +57,7 @@ import kotlinx.coroutines.launch
 @Composable
 fun HomeContent(
     userName: String?,
-    avatarUri: Uri?,
+    avatarUri: Bitmap?,
     navController: NavController,
     searchBookViewModel: SearchBookViewModel,
     imageDataStore: StoreProfileImage,
@@ -135,7 +135,7 @@ fun HomeContent(
 
 @Composable
 private fun DrawerContent(
-    avatarUri: Uri?,
+    avatarUri: Bitmap?,
     userName: String?,
     totalBooks: Int,
     onChangePhoto: () -> Unit,
@@ -163,7 +163,7 @@ private fun DrawerContent(
 }
 
 @Composable
-private fun ProfileSection(avatarUri: Uri?, userName: String?, onChangePhoto: () -> Unit) {
+private fun ProfileSection(avatarUri: Bitmap?, userName: String?, onChangePhoto: () -> Unit) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
