@@ -31,6 +31,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
@@ -134,18 +135,24 @@ private fun BookImage(url: String, onClick: () -> Unit) {
 }
 
 @Composable
-private fun StarRating(rating: Float, maxStars: Int = 5, starSize: Dp = 14.dp) {
+private fun StarRating(
+    rating: Float,
+    maxStars: Int = 5,
+    starSize: Dp = 14.dp,
+    filledColor: Color = Color(0xFFFFC107)
+) {
     Row(verticalAlignment = Alignment.CenterVertically) {
         val fullStars = rating.toInt().coerceIn(0, maxStars)
         val hasHalf = (rating - fullStars) >= 0.5f
+        val halfIndex = if (hasHalf) fullStars else -1
+
         (0 until maxStars).forEach { index ->
             val (icon, tint) = when {
-                index < fullStars ->
-                    Icons.Rounded.Star to MaterialTheme.colorScheme.primary
-                index == fullStars && hasHalf ->
-                    Icons.AutoMirrored.Rounded.StarHalf to MaterialTheme.colorScheme.primary
-                else ->
-                    Icons.Rounded.Star to MaterialTheme.colorScheme.onSurfaceVariant
+                index < fullStars -> Icons.Rounded.Star to filledColor
+
+                index == halfIndex -> Icons.AutoMirrored.Rounded.StarHalf to filledColor
+
+                else -> Icons.Rounded.Star to Color.Gray.copy(alpha = 0.5f)
             }
             Icon(
                 imageVector = icon,
@@ -189,7 +196,7 @@ private fun ReadingPreview() {
         bookAuthor = "J.K. Rowling",
         bookTitle = "Harry Potter and the Philosopher's Stone",
         imageUrl = "https://via.placeholder.com/150",
-        rating = 4.0f,
+        rating = 4.5f,
         onClick = {},
         modifier = Modifier.padding(16.dp)
     )
