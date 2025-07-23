@@ -138,29 +138,20 @@ private fun StarRating(rating: Float, maxStars: Int = 5, starSize: Dp = 14.dp) {
     Row(verticalAlignment = Alignment.CenterVertically) {
         val fullStars = rating.toInt().coerceIn(0, maxStars)
         val hasHalf = (rating - fullStars) >= 0.5f
-        repeat(fullStars) {
+        (0 until maxStars).forEach { index ->
+            val (icon, tint) = when {
+                index < fullStars ->
+                    Icons.Rounded.Star to MaterialTheme.colorScheme.primary
+                index == fullStars && hasHalf ->
+                    Icons.AutoMirrored.Rounded.StarHalf to MaterialTheme.colorScheme.primary
+                else ->
+                    Icons.Rounded.Star to MaterialTheme.colorScheme.onSurfaceVariant
+            }
             Icon(
-                imageVector = Icons.Rounded.Star,
+                imageVector = icon,
                 contentDescription = stringResource(R.string.star),
                 modifier = Modifier.size(starSize),
-                tint = MaterialTheme.colorScheme.primary
-            )
-        }
-        if (hasHalf && fullStars < maxStars) {
-            Icon(
-                imageVector = Icons.AutoMirrored.Rounded.StarHalf,
-                contentDescription = stringResource(R.string.starhalf),
-                modifier = Modifier.size(starSize),
-                tint = MaterialTheme.colorScheme.primary
-            )
-        }
-        val emptyStars = maxStars - fullStars - if (hasHalf) 1 else 0
-        repeat(emptyStars) {
-            Icon(
-                imageVector = Icons.Rounded.Star,
-                contentDescription = stringResource(R.string.star),
-                modifier = Modifier.size(starSize),
-                tint = MaterialTheme.colorScheme.onSurfaceVariant
+                tint = tint
             )
         }
     }
@@ -198,7 +189,7 @@ private fun ReadingPreview() {
         bookAuthor = "J.K. Rowling",
         bookTitle = "Harry Potter and the Philosopher's Stone",
         imageUrl = "https://via.placeholder.com/150",
-        rating = 4.5f,
+        rating = 4.0f,
         onClick = {},
         modifier = Modifier.padding(16.dp)
     )
