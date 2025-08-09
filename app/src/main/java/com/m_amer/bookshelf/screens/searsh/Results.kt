@@ -23,6 +23,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -45,17 +46,14 @@ fun Results(viewModel: SearchBookViewModel, navController: NavController) {
 
     when {
         loading == true -> {
-            Box(
-                modifier = Modifier.fillMaxSize(),
-                contentAlignment = Alignment.Center
-            ) {
+            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                 LinearProgressIndicator(color = Yellow)
             }
         }
 
         searchResults.e != null -> {
             Text(
-                text = "Error: ${searchResults.e!!.message ?: "Unknown error"}",
+                text = "Error: ${searchResults.e!!.message ?: stringResource(R.string.unknown_error)}",
                 color = Color.Red,
                 modifier = Modifier.padding(16.dp)
             )
@@ -69,9 +67,7 @@ fun Results(viewModel: SearchBookViewModel, navController: NavController) {
                 items(listOfBooks) { item ->
                     val imageUrl = item.imageLinks.thumbnail
                         .replace("^http://".toRegex(), "https://")
-                        .ifEmpty {
-                            "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg"
-                        }
+                        .ifEmpty { "https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg" }
 
                     val title = item.title.ifEmpty { "Title information unavailable" }
                     val author =
@@ -88,9 +84,7 @@ fun Results(viewModel: SearchBookViewModel, navController: NavController) {
                         bookAuthor = author,
                         previewText = previewText,
                         imageUrl = imageUrl,
-                        onClick = {
-                            navController.navigate(BookShelfScreens.BookScreen.name + "/${item.bookID}")
-                        }
+                        onClick = { navController.navigate(BookShelfScreens.BookScreen.name + "/${item.bookID}") }
                     )
                 }
             }
@@ -128,7 +122,7 @@ fun SearchCard(
                     .placeholder(R.drawable.placeholder_book) // صورة افتراضية
                     .error(R.drawable.error_book) // صورة عند فشل التحميل
                     .build(),
-                contentDescription = "Book Image",
+                contentDescription = stringResource(R.string.book_image),
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .size(80.dp)
