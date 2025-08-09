@@ -38,10 +38,7 @@ import com.m_amer.bookshelf.ui.theme.Yellow
 import com.m_amer.bookshelf.ui.theme.poppinsFamily
 
 @Composable
-fun SearchScreen(
-    navController: NavController,
-    viewModel: SearchBookViewModel
-) {
+fun SearchScreen(navController: NavController, viewModel: SearchBookViewModel) {
     val userId = Firebase.auth.currentUser?.uid
     var previousSearches by remember { mutableStateOf(listOf<String>()) }
     var displayPreviousHistory by remember { mutableStateOf(false) }
@@ -69,8 +66,10 @@ fun SearchScreen(
             .padding(20.dp)
     ) {
         Search(navController = navController, viewModel = viewModel) { query ->
-            viewModel.resultsState.value.loading = true
-            viewModel.searchBooks(query)
+            viewModel.apply {
+                resultsState.value.loading = true
+                searchBooks(query)
+            }
 
             if (userId != null) {
                 FirebaseFirestore.getInstance()
@@ -114,8 +113,10 @@ fun SearchScreen(
 
                     items.forEach {
                         HistoryCard(text = it) {
-                            viewModel.resultsState.value.loading = true
-                            viewModel.searchBooks(it)
+                            viewModel.apply {
+                                resultsState.value.loading = true
+                                searchBooks(it)
+                            }
                         }
                     }
                 }
