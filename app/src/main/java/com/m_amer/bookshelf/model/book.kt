@@ -1,8 +1,8 @@
 package com.m_amer.bookshelf.model
 
-import com.google.firebase.firestore.PropertyName
-import java.time.LocalDate
+import kotlinx.serialization.Serializable
 
+@Serializable
 data class Book(
     /** The unique identifier of the book */
     var bookID: String,
@@ -55,11 +55,13 @@ data class Book(
     )
 }
 
+@Serializable
 data class ImageLinks(
     val thumbnail: String = "",
     val smallThumbnail: String = ""
 )
 
+@Serializable
 data class IndustryIdentifier(
     val type: String = "",
     val identifier: String = ""

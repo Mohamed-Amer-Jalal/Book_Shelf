@@ -78,20 +78,16 @@ dependencies {
 
     implementation(libs.androidx.datastore.preferences)
 
-    // Ktor core & Android engine
+    // Ktor
     implementation(libs.ktor.client.core)
-    implementation(libs.ktor.client.android)
-
-    // JSON serialization (Kotlinx)
-    implementation(libs.ktor.serialization.kotlinx.json)
+    implementation(libs.ktor.client.okhttp)
     implementation(libs.ktor.client.content.negotiation)
+    implementation(libs.ktor.serialization.kotlinx.json)
 
-    // Optional: Logging
-    implementation(libs.ktor.client.logging)
-
-    // Koin core
-    implementation(libs.koin.core)
-
-    // Koin for Android
+// Koin
     implementation(libs.koin.android)
+
+// Coroutines
+    implementation(libs.kotlinx.coroutines.core)
+    implementation(libs.kotlinx.coroutines.android)
 }
