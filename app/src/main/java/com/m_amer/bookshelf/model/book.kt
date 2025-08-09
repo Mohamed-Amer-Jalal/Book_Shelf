@@ -5,54 +5,55 @@ import java.time.LocalDate
 
 data class Book(
     /** The unique identifier of the book */
-    @PropertyName("bookID")
-    val bookID: String = "",
-
+    var bookID: String,
     /** A list of authors of the book */
-    val authors: List<String> = emptyList(),
-
+    val authors: List<String>,
     /** The average rating of the book */
-    val averageRating: Double = 0.0,
-
+    val averageRating: Double,
     /** A list of categories the book belongs to */
-    val categories: List<String> = emptyList(),
-
+    val categories: List<String>,
     /** A brief description of the book */
-    val description: String = "",
-
+    val description: String,
     /** Image links related to the book */
-    val imageLinks: ImageLinks = ImageLinks(),
-
+    val imageLinks: ImageLinks,
     /** The language in which the book is written */
-    val language: String = "",
-
+    val language: String,
     /** The number of pages the book has */
-    val pageCount: Int = 0,
-
+    val pageCount: Int,
     /** A list of industry identifiers for the book */
-    val industryIdentifiers: List<IndustryIdentifier> = emptyList(),
-
-    /**
-     * The date the book was published.
-     * Stored as ISO string in Firestore, converted to LocalDate here.
-     */
-    val publishedDate: LocalDate = LocalDate.MIN,
-
+    val industryIdentifiers: List<IndustryIdentifier>,
+    /** The date the book was published */
+    val publishedDate: String,
     /** The publisher of the book */
-    val publisher: String = "",
-
+    val publisher: String,
     /** The number of ratings the book has received */
-    val ratingsCount: Int = 0,
-
+    val ratingsCount: Int,
     /** The subtitle of the book */
-    val subtitle: String = "",
-
+    val subtitle: String,
     /** The title of the book */
-    val title: String = "",
-
+    val title: String,
     /** Information related to a search query for the book */
-    val searchInfo: String = ""
-)
+    val searchInfo: String
+) {
+    // No-argument constructor required for Firestore deserialization
+    constructor() : this(
+        "",
+        emptyList(),
+        0.0,
+        emptyList(),
+        "",
+        ImageLinks("", ""),
+        "",
+        0,
+        emptyList(),
+        "",
+        "",
+        0,
+        "",
+        "",
+        ""
+    )
+}
 
 data class ImageLinks(
     val thumbnail: String = "",
