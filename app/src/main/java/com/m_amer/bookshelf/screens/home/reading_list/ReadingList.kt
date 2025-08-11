@@ -35,6 +35,20 @@ import com.m_amer.bookshelf.ui.theme.Yellow
 import com.m_amer.bookshelf.ui.theme.poppinsFamily
 import java.time.LocalDate
 
+/**
+ * Displays the reading list screen.
+ *
+ * This composable function manages the UI for displaying the user's reading list. It handles
+ * different states:
+ * - Loading: Shows a progress indicator.
+ * - Empty: Shows a message and an image indicating an empty reading list.
+ * - Content: Shows the list of books in the reading list.
+ *
+ * @param navController The NavController used for navigation.
+ * @param loading A boolean indicating whether the data is currently loading.
+ * @param readingList A list of [Book] objects representing the user's reading list.
+ * @param modifier A [Modifier] to be applied to the root Column of this composable.
+ */
 @Composable
 fun ReadingList(
     navController: NavController,
@@ -61,6 +75,9 @@ fun ReadingList(
     }
 }
 
+/**
+ * Displays the title for the reading list section.
+ */
 @Composable
 private fun SectionTitle() {
     Text(
@@ -75,6 +92,14 @@ private fun SectionTitle() {
     )
 }
 
+/**
+ * Displays a loading indicator.
+ *
+ * This composable function shows a centered linear progress indicator to signify
+ * that data is being loaded.
+ *
+ * @param modifier A [Modifier] to be applied to the Box containing the progress indicator.
+ */
 @Composable
 private fun LoadingView(modifier: Modifier = Modifier) {
     Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
@@ -82,6 +107,14 @@ private fun LoadingView(modifier: Modifier = Modifier) {
     }
 }
 
+/**
+ * Displays a view when the reading list is empty.
+ *
+ * This composable function shows an image of an empty shelf and text prompting the user
+ * to explore books, indicating that their reading list is currently empty.
+ *
+ * @param modifier A [Modifier] to be applied to the Column containing the empty state UI.
+ */
 @Composable
 private fun EmptyReadingListView(modifier: Modifier = Modifier) {
     Column(
@@ -116,6 +149,17 @@ private fun EmptyReadingListView(modifier: Modifier = Modifier) {
     }
 }
 
+/**
+ * Displays the content of the reading list, which is a scrollable list of books.
+ *
+ * This composable function uses a [LazyColumn] to efficiently display the list of books.
+ * Each item in the list is represented by a [ReadingItem] composable. Clicking on a
+ * book item navigates to the [BookShelfScreens.BookScreen] for that specific book.
+ *
+ * @param readingList A list of [Book] objects to be displayed.
+ * @param navController The NavController used for navigation when a book is clicked.
+ * @param modifier A [Modifier] to be applied to the LazyColumn.
+ */
 @Composable
 private fun ReadingListContent(
     readingList: List<Book>,
@@ -141,6 +185,19 @@ private fun ReadingListContent(
     }
 }
 
+/**
+ * Displays a single book item in the reading list.
+ *
+ * This composable function takes a [Book] object and an `onClick` lambda.
+ * It extracts relevant information from the [Book] object such as genre, author, title,
+ * image URL, and rating, and then displays it using the [Reading] composable.
+ * The image URL is modified to use "https://" for secure connections.
+ * The genre is determined by taking the shortest category string, or "Unavailable" if no
+ * categories are present or if they are blank.
+ *
+ * @param book The [Book] object to display.
+ * @param onClick A lambda function to be invoked when the item is clicked.
+ */
 @Composable
 private fun ReadingItem(book: Book, onClick: () -> Unit) {
     val genre = book.categories.firstOrNull()?.split("/")?.minByOrNull { it.length }?.trim()
@@ -180,7 +237,7 @@ private fun ReadingListPreview() {
             language = "en",
             pageCount = 223,
             industryIdentifiers = emptyList(),
-            publishedDate = LocalDate.parse("1997-06-26"),  // تحويل للنمط الافتراضي ISO
+            publishedDate = LocalDate.parse("1997-06-26").toString(),  // تحويل للنمط الافتراضي ISO
             publisher = "Bloomsbury",
             ratingsCount = 12000,
             subtitle = "Philosopher's Stone",
@@ -199,7 +256,7 @@ private fun ReadingListPreview() {
             language = "en",
             pageCount = 328,
             industryIdentifiers = emptyList(),
-            publishedDate = LocalDate.parse("1949-06-08"),
+            publishedDate = LocalDate.parse("1949-06-08").toString(),
             publisher = "Sicker & Wartburg",
             ratingsCount = 15000,
             subtitle = "",

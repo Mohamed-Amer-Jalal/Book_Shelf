@@ -26,6 +26,16 @@ import com.m_amer.bookshelf.R
 import com.m_amer.bookshelf.navigation.BookShelfScreens
 import kotlinx.coroutines.delay
 
+/**
+ * Composable function that displays a splash screen.
+ *
+ * The splash screen shows an image that fades in and then navigates to a specified route.
+ *
+ * @param navController The NavController used for navigation.
+ * @param modifier Modifier to be applied to the Surface of the splash screen.
+ * @param routeOnFinish The route to navigate to after the splash screen animation finishes.
+ *                      Defaults to the HomeScreen.
+ */
 @Composable
 fun SplashScreen(
     navController: NavController,

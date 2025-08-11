@@ -22,6 +22,14 @@ import com.m_amer.bookshelf.data.categories
 import com.m_amer.bookshelf.navigation.BookShelfScreens
 import com.m_amer.bookshelf.ui.theme.poppinsFamily
 
+/**
+ * Displays a horizontal list of categories.
+ *
+ * Each category is represented by an image and a name. When a category is clicked,
+ * it navigates to the [BookShelfScreens.CategoryScreen] for that category.
+ *
+ * @param navController The [NavController] used for navigation.
+ */
 @Composable
 fun Categories(navController: NavController) {
     Text(
@@ -52,6 +60,13 @@ fun Categories(navController: NavController) {
     }
 }
 
+/**
+ * A composable function that displays a list of categories.
+ *
+ * @param categoriesMap A map of category names to image resource IDs.
+ * @param onCategoryClick A lambda function that is called when a category is clicked.
+ * @param modifier A [Modifier] for this composable.
+ */
 @Composable
 private fun CategoriesContent(
     categoriesMap: Map<String, Int>,

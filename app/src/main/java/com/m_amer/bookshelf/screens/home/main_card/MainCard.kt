@@ -48,6 +48,16 @@ import com.m_amer.bookshelf.model.ImageLinks
 import com.m_amer.bookshelf.navigation.BookShelfScreens
 import com.m_amer.bookshelf.ui.theme.poppinsFamily
 
+/**
+ * Composable function to display the main card on the home screen.
+ *
+ * This card displays a welcome message and the currently reading book, if any.
+ * It also provides a way to navigate to the book details screen.
+ *
+ * @param currentRead The currently reading book.
+ * @param navController The NavController used for navigation.
+ * @param readingList The list of books in the user's reading list.
+ */
 @Composable
 fun MainCard(currentRead: Book, navController: NavController, readingList: List<Book>) {
     var loading by remember { mutableStateOf(false) }
@@ -154,6 +164,17 @@ fun MainCard(currentRead: Book, navController: NavController, readingList: List<
     }
 }
 
+/**
+ * Composable function to display the book image.
+ *
+ * This function displays the book image if the user has a reading list and the image URL is not null or blank.
+ * Otherwise, it displays a placeholder image.
+ *
+ * @param hasReading A boolean indicating whether the user has a reading list.
+ * @param imageUrl The URL of the book image.
+ * @param onLoading A callback function to be invoked when the image starts loading.
+ * @param onFinished A callback function to be invoked when the image loading is finished (either success or error).
+ */
 @Composable
 private fun BookImage(
     hasReading: Boolean,
@@ -192,14 +213,51 @@ private fun BookImage(
 @Preview
 @Composable
 fun MainCardPreview() {
-    val currentRead = Book(
-        bookID = "1",
-        title = "The Lord of the Rings",
-        imageLinks = ImageLinks(thumbnail = "http://books.google.com/books/content?id=someId&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api")
-    )
     val context = LocalContext.current
-    // ننشئ NavController فارغ بدون استخدام rememberNavController()
     val navController = NavController(context)
-    val readingList = listOf(currentRead)
-    MainCard(currentRead = currentRead, navController = navController, readingList = readingList)
+    val readingList = listOf(Book(
+        bookID = "1",
+        authors = listOf("J.R.R. Tolkien"),
+        averageRating = 4.9,
+        categories = listOf("Fantasy", "Adventure"),
+        description = "A high fantasy epic.",
+        imageLinks = ImageLinks(
+            smallThumbnail = "http://books.google.com/books/content?id=someId&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+            thumbnail = "http://books.google.com/books/content?id=someId&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+        ),
+        language = "en",
+        pageCount = 1178,
+        industryIdentifiers = emptyList(),
+        publishedDate = "1954",
+        publisher = "Allen & Unwind",
+        ratingsCount = 5000,
+        subtitle = "",
+        title = "The Lord of the Rings",
+        searchInfo = "An epic fantasy novel."
+    ))
+
+    MainCard(
+        currentRead = Book(
+            bookID = "1",
+            authors = listOf("J.R.R. Tolkien"),
+            averageRating = 4.9,
+            categories = listOf("Fantasy", "Adventure"),
+            description = "A high fantasy epic.",
+            imageLinks = ImageLinks(
+                smallThumbnail = "http://books.google.com/books/content?id=someId&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api",
+                thumbnail = "http://books.google.com/books/content?id=someId&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+            ),
+            language = "en",
+            pageCount = 1178,
+            industryIdentifiers = emptyList(),
+            publishedDate = "1954",
+            publisher = "Allen & Unwind",
+            ratingsCount = 5000,
+            subtitle = "",
+            title = "The Lord of the Rings",
+            searchInfo = "An epic fantasy novel."
+        ),
+        navController = navController,
+        readingList = readingList
+    )
 }

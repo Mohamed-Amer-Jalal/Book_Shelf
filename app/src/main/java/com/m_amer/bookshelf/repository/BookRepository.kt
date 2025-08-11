@@ -4,7 +4,6 @@ import com.m_amer.bookshelf.booksApiKtor.BooksApiKtor
 import com.m_amer.bookshelf.model.Book
 import com.m_amer.bookshelf.model.DataOrException
 
-
 /**
  * Repository class for fetching book data from the Books API.
  * This class interacts with the [BooksApiKtor] to retrieve book information
@@ -14,7 +13,6 @@ import com.m_amer.bookshelf.model.DataOrException
  * @property converter An instance of [ResourceConverter] used to convert API responses into [Book] objects.
  */
 class BookRepository(private val api: BooksApiKtor, private val converter: ResourceConverter) {
-
 
     /**
      * Retrieves a list of books based on a search query.
@@ -34,7 +32,6 @@ class BookRepository(private val api: BooksApiKtor, private val converter: Resou
             DataOrException(e = e)
         }
     }
-
 
     /**
      * Fetches detailed information for a specific book.

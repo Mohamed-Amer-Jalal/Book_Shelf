@@ -44,6 +44,21 @@ import coil3.request.ImageRequest
 import coil3.request.crossfade
 import com.m_amer.bookshelf.R
 
+/**
+ * Composable function that displays a reading list item.
+ *
+ * This function creates a surface with rounded corners and tonal elevation,
+ * displaying book information including genre, title, author, cover image, and rating.
+ * It also includes a "Read More" button. The entire item is clickable.
+ *
+ * @param genre The genre of the book.
+ * @param bookAuthor The author of the book.
+ * @param bookTitle The title of the book.
+ * @param imageUrl The URL of the book's cover image.
+ * @param rating The rating of the book (e.g., 4.5f).
+ * @param onClick Lambda function to be executed when the item is clicked.
+ * @param modifier Optional [Modifier] to be applied to the composable.
+ */
 @Composable
 fun Reading(
     genre: String,
@@ -101,6 +116,17 @@ fun Reading(
     }
 }
 
+/**
+ * Displays an image for a book.
+ *
+ * This composable function takes a URL string for the image and an onClick lambda.
+ * It uses [AsyncImage] to load the image asynchronously and shows a [CircularProgressIndicator]
+ * while the image is loading. The image is clipped to a rounded rectangle and has a
+ * background color.
+ *
+ * @param url The URL string of the book image.
+ * @param onClick A lambda function to be executed when the image is clicked.
+ */
 @Composable
 private fun BookImage(url: String, onClick: () -> Unit) {
     var isLoading by remember { mutableStateOf(true) }
@@ -134,6 +160,14 @@ private fun BookImage(url: String, onClick: () -> Unit) {
     }
 }
 
+/**
+ * Composable function that displays a star rating.
+ *
+ * @param rating The rating value to display (e.g., 4.5f).
+ * @param maxStars The maximum number of stars to display (default is 5).
+ * @param starSize The size of each star icon (default is 14.dp).
+ * @param filledColor The color of the filled stars (default is Color(0xFFFFC107)).
+ */
 @Composable
 private fun StarRating(
     rating: Float,
@@ -164,6 +198,11 @@ private fun StarRating(
     }
 }
 
+/**
+ * Composable function that displays a "Read More" button with a forward arrow icon.
+ *
+ * @param onClick Lambda function to be executed when the button is clicked.
+ */
 @Composable
 private fun ReadMoreButton(onClick: () -> Unit) {
     Row(

@@ -26,7 +26,18 @@ import androidx.navigation.NavController
 import coil3.Bitmap
 import com.m_amer.bookshelf.R
 import com.m_amer.bookshelf.navigation.BookShelfScreens
+import com.m_amer.bookshelf.screens.searsh.SearchBookViewModel
 
+/**
+ * Composable function that displays the top header of the home screen.
+ * It includes the user's avatar, which is clickable to navigate to the profile screen,
+ * and a search icon, which navigates to the search screen.
+ *
+ * @param navController The NavController used for navigation.
+ * @param viewModel The SearchBookViewModel used to manage search results state.
+ * @param avatar The user's avatar bitmap.
+ * @param onProfileClick A lambda function to be executed when the profile avatar is clicked.
+ */
 @Composable
 fun TopHeader(
     navController: NavController,
@@ -34,6 +45,7 @@ fun TopHeader(
     avatar: Bitmap?,
     onProfileClick: () -> Unit
 ) {
+    var resultsState = viewModel.resultsState.value
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -41,7 +53,6 @@ fun TopHeader(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
-        // زر الصورة الشخصيّة
         Image(
             bitmap = avatar!!.asImageBitmap(),
             contentDescription = stringResource(R.string.profile_picture),
@@ -52,11 +63,10 @@ fun TopHeader(
                 .clickable(onClick = onProfileClick)
         )
 
-        // زر البحث
         IconButton(
             onClick = {
-                viewModel.loading.value = false
-                viewModel.listOfBooks.value = emptyList()
+                resultsState = resultsState.copy(data = listOf(), loading = false, e = null)
+
                 navController.navigate(BookShelfScreens.SearchScreen.name)
             },
             modifier = Modifier

@@ -24,6 +24,13 @@ import androidx.compose.ui.unit.sp
 import com.m_amer.bookshelf.R
 import com.m_amer.bookshelf.ui.theme.poppinsFamily
 
+/**
+ * Composable function that displays a category item.
+ *
+ * @param category The name of the category.
+ * @param image The resource ID of the image for the category.
+ * @param onClick A lambda function to be executed when the category is clicked.
+ */
 @Composable
 fun Category(category: String, image: Int, onClick: () -> Unit) {
     Column(

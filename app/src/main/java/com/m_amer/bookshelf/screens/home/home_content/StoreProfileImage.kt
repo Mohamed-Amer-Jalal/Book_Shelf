@@ -21,7 +21,7 @@ import kotlinx.io.IOException
  */
 class StoreProfileImage(
     private val context: Context,
-    ioDispatcher: CoroutineDispatcher = Dispatchers.IO
+    ioDispatcher: CoroutineDispatcher = Dispatchers.IO,
 ) {
     companion object {
         private val USER_IMAGE_KEY = stringPreferencesKey("user_image")
