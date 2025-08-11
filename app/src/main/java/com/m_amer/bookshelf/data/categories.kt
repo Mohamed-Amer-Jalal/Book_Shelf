@@ -2,6 +2,10 @@ package com.m_amer.bookshelf.data
 
 import com.m_amer.bookshelf.R
 
+/**
+ * A map that associates category names with their corresponding drawable resources.
+ * This is used to display category icons in the UI.
+ */
 val categories = mapOf(
     "Finance" to R.drawable.finance,
     "Education" to R.drawable.education,

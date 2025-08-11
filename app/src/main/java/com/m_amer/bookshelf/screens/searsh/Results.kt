@@ -38,28 +38,44 @@ import com.m_amer.bookshelf.R
 import com.m_amer.bookshelf.navigation.BookShelfScreens
 import com.m_amer.bookshelf.ui.theme.Yellow
 
+
+/**
+ * A Composable function that displays the search results for books.
+ *
+ * This function observes the state from the [SearchBookViewModel] to determine what to display:
+ * - If [SearchBookViewModel.loading] is true, it shows a [LinearProgressIndicator].
+ * - If [SearchBookViewModel.errorMessage] is not null, it displays an error message.
+ * - Otherwise, it displays a [LazyColumn] of [SearchCard] composables, each representing a book
+ *   from the [SearchBookViewModel.listOfBooks]. Clicking on a card navigates to the
+ *   [BookShelfScreens.BookScreen] with the corresponding book ID.
+ *
+ * @param viewModel The [SearchBookViewModel] instance that holds the search state and results.
+ * @param navController The [NavController] used for navigating to other screens.
+ */
 @Composable
 fun Results(viewModel: SearchBookViewModel, navController: NavController) {
     val searchResults = viewModel.resultsState.value
-    val listOfBooks = viewModel.listOfBooks.value
-    val loading = searchResults.loading // بدل ما نتحكم فيه من هنا
+    val listOfBooks = searchResults.data ?: emptyList()
 
     when {
-        loading == true -> {
+        viewModel.loading -> {
             Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                 LinearProgressIndicator(color = Yellow)
             }
         }
 
-        searchResults.e != null -> {
+        viewModel.errorMessage != null -> {
             Text(
-                text = "Error: ${searchResults.e!!.message ?: stringResource(R.string.unknown_error)}",
+                text = stringResource(
+                    R.string.error,
+                    searchResults.e?.message ?: stringResource(R.string.unknown_error)
+                ),
                 color = Color.Red,
                 modifier = Modifier.padding(16.dp)
             )
         }
 
-        listOfBooks.isNotEmpty() -> {
+        viewModel.listOfBooks.isNotEmpty() -> {
             LazyColumn(
                 modifier = Modifier.fillMaxSize(),
                 verticalArrangement = Arrangement.spacedBy(15.dp)
@@ -92,8 +108,20 @@ fun Results(viewModel: SearchBookViewModel, navController: NavController) {
     }
 }
 
+/**
+ * A Composable function that displays a card for a book search result.
+ *
+ * This card shows the book's title, author, a short preview text, and its cover image.
+ * It is clickable and triggers the provided [onClick] lambda when tapped.
+ *
+ * @param bookTitle The title of the book.
+ * @param bookAuthor The author(s) of the book.
+ * @param previewText A short snippet or description of the book.
+ * @param imageUrl The URL of the book's cover image.
+ * @param onClick A lambda function to be executed when the card is clicked.
+ */
 @Composable
-fun SearchCard(
+private fun SearchCard(
     bookTitle: String,
     bookAuthor: String,
     previewText: String,
@@ -119,8 +147,8 @@ fun SearchCard(
                 model = ImageRequest.Builder(LocalContext.current)
                     .data(imageUrl)
                     .crossfade(true)
-                    .placeholder(R.drawable.placeholder_book) // صورة افتراضية
-                    .error(R.drawable.error_book) // صورة عند فشل التحميل
+                    .placeholder(R.drawable.placeholder_book)
+                    .error(R.drawable.error_book)
                     .build(),
                 contentDescription = stringResource(R.string.book_image),
                 contentScale = ContentScale.Crop,

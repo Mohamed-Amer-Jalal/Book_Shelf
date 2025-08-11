@@ -2,40 +2,43 @@ package com.m_amer.bookshelf.model
 
 import kotlinx.serialization.Serializable
 
+/**
+ * Represents a book with its details.
+ *
+ * @property bookID The unique identifier of the book.
+ * @property authors A list of authors of the book.
+ * @property averageRating The average rating of the book.
+ * @property categories A list of categories the book belongs to.
+ * @property description A brief description of the book.
+ * @property imageLinks Image links related to the book.
+ * @property language The language in which the book is written.
+ * @property pageCount The number of pages the book has.
+ * @property industryIdentifiers A list of industry identifiers for the book.
+ * @property publishedDate The date the book was published.
+ * @property publisher The publisher of the book.
+ * @property ratingsCount The number of ratings the book has received.
+ * @property subtitle The subtitle of the book.
+ * @property title The title of the book.
+ * @property searchInfo Information related to a search query for the book.
+ */
 @Serializable
 data class Book(
-    /** The unique identifier of the book */
     var bookID: String,
-    /** A list of authors of the book */
     val authors: List<String>,
-    /** The average rating of the book */
     val averageRating: Double,
-    /** A list of categories the book belongs to */
     val categories: List<String>,
-    /** A brief description of the book */
     val description: String,
-    /** Image links related to the book */
     val imageLinks: ImageLinks,
-    /** The language in which the book is written */
     val language: String,
-    /** The number of pages the book has */
     val pageCount: Int,
-    /** A list of industry identifiers for the book */
     val industryIdentifiers: List<IndustryIdentifier>,
-    /** The date the book was published */
     val publishedDate: String,
-    /** The publisher of the book */
     val publisher: String,
-    /** The number of ratings the book has received */
     val ratingsCount: Int,
-    /** The subtitle of the book */
     val subtitle: String,
-    /** The title of the book */
     val title: String,
-    /** Information related to a search query for the book */
     val searchInfo: String
 ) {
-    // No-argument constructor required for Firestore deserialization
     constructor() : this(
         "",
         emptyList(),
@@ -55,14 +58,20 @@ data class Book(
     )
 }
 
+/**
+ * Data class representing image links for a book.
+ *
+ * @property thumbnail The URL of the thumbnail image for the book.
+ * @property smallThumbnail The URL of the small thumbnail image for the book.
+ */
 @Serializable
-data class ImageLinks(
-    val thumbnail: String = "",
-    val smallThumbnail: String = ""
-)
+data class ImageLinks(val thumbnail: String = "", val smallThumbnail: String = "")
 
+/**
+ * Represents an industry identifier for a book.
+ *
+ * @property type The type of the identifier (e.g., ISBN_10, ISBN_13).
+ * @property identifier The actual identifier string.
+ */
 @Serializable
-data class IndustryIdentifier(
-    val type: String = "",
-    val identifier: String = ""
-)
+data class IndustryIdentifier(val type: String = "", val identifier: String = "")

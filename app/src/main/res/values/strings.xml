@@ -22,9 +22,10 @@
     <string name="developer_mohamed_amer">Developer: Mohamed Amer</string>
     <string name="books_in_your_reading_list">%1$d books in your reading list</string>
     <string name="book_image">Book Image</string>
-    <string name="unknown_error">Unknown error</string>
     <string name="close_search">Close Search</string>
     <string name="search">Search</string>
     <string name="find_a_book">Find a book 🧐</string>
     <string name="recent_searches">Recent Searches</string>
+    <string name="error">Error: %1$s</string>
+    <string name="unknown_error">Unknown error</string>
 </resources>

@@ -37,6 +37,14 @@ import com.m_amer.bookshelf.R
 import com.m_amer.bookshelf.ui.theme.Yellow
 import com.m_amer.bookshelf.ui.theme.poppinsFamily
 
+/**
+ * Composable function for the search screen.
+ *
+ * This screen allows users to search for books and view their search history.
+ *
+ * @param navController The NavController used for navigation.
+ * @param viewModel The SearchBookViewModel used to manage search state and data.
+ */
 @Composable
 fun SearchScreen(navController: NavController, viewModel: SearchBookViewModel) {
     val userId = Firebase.auth.currentUser?.uid
@@ -128,20 +136,25 @@ fun SearchScreen(navController: NavController, viewModel: SearchBookViewModel) {
     }
 }
 
+/**
+ * A composable function that displays a card with a search history item.
+ *
+ * @param text The text to display in the card, representing a previous search query.
+ * @param onClick A lambda function to be executed when the card is clicked. This typically triggers a new search with the history item's text.
+ */
 @Composable
-fun HistoryCard(text: String, onClick: () -> Unit) {
+private fun HistoryCard(text: String, onClick: () -> Unit) {
     Card(
         modifier = Modifier
             .clickable(onClick = onClick)
-            .heightIn(min = 30.dp) // مرونة أكبر للارتفاع
+            .heightIn(min = 30.dp)
             .padding(vertical = 2.dp),
         shape = RoundedCornerShape(10.dp),
         colors = CardDefaults.cardColors(containerColor = Yellow),
         elevation = CardDefaults.cardElevation(0.dp)
     ) {
         Box(
-            modifier = Modifier
-                .padding(horizontal = 8.dp, vertical = 4.dp),
+            modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp),
             contentAlignment = Alignment.Center
         ) {
             Text(

@@ -34,8 +34,22 @@ import com.m_amer.bookshelf.R
 import com.m_amer.bookshelf.navigation.BookShelfScreens
 import com.m_amer.bookshelf.ui.theme.poppinsFamily
 
+/**
+ * Composable function for the search screen.
+ *
+ * This function displays a search bar and allows the user to search for books.
+ * It also includes a close button to navigate back to the home screen.
+ *
+ * @param navController The navigation controller for navigating between screens.
+ * @param viewModel The view model for handling search logic.
+ * @param onSearch A callback function that is invoked when a search is performed.
+ */
 @Composable
-fun Search(navController: NavController, viewModel: SearchBookViewModel, onSearch: (String) -> Unit = {}) {
+fun Search(
+    navController: NavController,
+    viewModel: SearchBookViewModel,
+    onSearch: (String) -> Unit = {}
+) {
     val searchQuery = rememberSaveable { mutableStateOf("") }
     val keyboardController = LocalSoftwareKeyboardController.current
     val isValid = searchQuery.value.trim().isNotEmpty()
@@ -45,11 +59,12 @@ fun Search(navController: NavController, viewModel: SearchBookViewModel, onSearc
             .fillMaxSize()
             .padding(16.dp)
     ) {
-        // شريط علوي مع زر إغلاق
         Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
             IconButton(onClick = {
                 navController.navigate(BookShelfScreens.HomeScreen.name) {
-                    popUpTo(BookShelfScreens.HomeScreen.name) { inclusive = true }
+                    popUpTo(
+                        BookShelfScreens.HomeScreen.name
+                    ) { inclusive = true }
                 }
             }) {
                 Icon(
@@ -69,7 +84,6 @@ fun Search(navController: NavController, viewModel: SearchBookViewModel, onSearc
 
         Spacer(modifier = Modifier.height(20.dp))
 
-        // حقل البحث
         OutlinedTextField(
             value = searchQuery.value,
             onValueChange = { searchQuery.value = it },
@@ -96,7 +110,10 @@ fun Search(navController: NavController, viewModel: SearchBookViewModel, onSearc
                         }
                     }
                 ) {
-                    Icon(Icons.Default.Search, contentDescription = stringResource(R.string.search))
+                    Icon(
+                        Icons.Default.Search,
+                        contentDescription = stringResource(R.string.search)
+                    )
                 }
             }
         )
