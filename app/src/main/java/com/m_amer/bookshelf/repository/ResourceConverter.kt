@@ -35,7 +35,6 @@ class ResourceConverter {
     fun toBookList(resource: BooksResource): List<Book> =
         resource.items?.mapNotNull { it?.let(::toBook) } ?: emptyList()
 
-
     /**
      * Converts an [Item] from the Google Books API response to a [Book] object.
      *

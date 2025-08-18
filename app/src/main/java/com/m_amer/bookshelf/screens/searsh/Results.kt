@@ -29,15 +29,11 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.core.text.HtmlCompat
 import androidx.navigation.NavController
-import coil3.compose.AsyncImage
-import coil3.request.ImageRequest
-import coil3.request.crossfade
-import coil3.request.error
-import coil3.request.placeholder
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import com.m_amer.bookshelf.R
 import com.m_amer.bookshelf.navigation.BookShelfScreens
 import com.m_amer.bookshelf.ui.theme.Yellow
-
 
 /**
  * A Composable function that displays the search results for books.

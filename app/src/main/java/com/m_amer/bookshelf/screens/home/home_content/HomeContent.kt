@@ -45,7 +45,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import coil3.compose.AsyncImage
+import coil.compose.AsyncImage
 import com.m_amer.bookshelf.R
 import com.m_amer.bookshelf.model.Book
 import com.m_amer.bookshelf.screens.home.categories.Categories

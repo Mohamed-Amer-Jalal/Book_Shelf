@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+    alias(libs.plugins.firebase.crashlytics)
 }
 
 android {
@@ -46,51 +47,65 @@ kotlin {
 
 dependencies {
 
+    // Platform / BOM
+    implementation(platform(libs.androidx.compose.bom))
+
+    // AndroidX core & lifecycle
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.androidx.compose.bom))
+
+    // Compose UI & related
+    implementation(libs.androidx.foundation)
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
-    implementation(libs.androidx.material3)
-    implementation(libs.androidx.navigation.runtime.android)
-    implementation(libs.firebase.firestore.ktx)
-    implementation(libs.androidx.navigation.compose.jvmstubs)
-    implementation(libs.firebase.auth.ktx)
-    implementation(libs.androidx.datastore.core.android)
-    implementation(libs.androidx.datastore.preferences.core.android)
-    implementation(libs.firebase.crashlytics.buildtools)
-    implementation(libs.androidx.constraintlayout)
-    implementation(libs.transport.runtime)
-    implementation(libs.material3)
     implementation(libs.androidx.ui.util)
-    implementation(libs.androidx.foundation)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.ui.test.junit4)
-    debugImplementation(libs.androidx.ui.tooling)
-    debugImplementation(libs.androidx.ui.test.manifest)
 
+    // Material / Icons
+    implementation(libs.androidx.material3)
     implementation(libs.androidx.material.icons.core)
     implementation(libs.androidx.material.icons.extended)
 
-    implementation(libs.coil.compose)
+    // Navigation
+    implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.navigation.runtime.android)
 
+    // Firebase
+    implementation(libs.firebase.auth.ktx)
+    implementation(libs.firebase.firestore.ktx)
+
+    // DataStore
     implementation(libs.androidx.datastore.preferences)
+    implementation(libs.androidx.datastore.core.android)
+    implementation(libs.androidx.datastore.preferences.core.android)
 
-    // Ktor
+    // Networking / Ktor
     implementation(libs.ktor.client.core)
     implementation(libs.ktor.client.okhttp)
     implementation(libs.ktor.client.content.negotiation)
     implementation(libs.ktor.serialization.kotlinx.json)
 
-// Koin
+    // DI / Koin
     implementation(libs.koin.android)
 
-// Coroutines
+    // Coroutines
     implementation(libs.kotlinx.coroutines.core)
     implementation(libs.kotlinx.coroutines.android)
+
+    // Other runtime libs
+    implementation(libs.coil.compose)
+    implementation(libs.transport.runtime)
+    implementation(libs.androidx.constraintlayout.compose)
+
+    // Testing
+    testImplementation(libs.junit)
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.androidx.espresso.core)
+    androidTestImplementation(libs.androidx.junit)
+    androidTestImplementation(libs.androidx.ui.test.junit4)
+
+    // Debug-only
+    debugImplementation(libs.androidx.ui.tooling)
+    debugImplementation(libs.androidx.ui.test.manifest)
 }

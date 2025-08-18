@@ -59,19 +59,31 @@ class SearchBookViewModel(private val repository: BookRepository) : ViewModel() 
     /**
      * Searches for books based on the provided query.
      *
-     * This function launches a coroutine in the ViewModel's scope to perform the search.
-     * If the query is empty, the function returns immediately.
-     * Otherwise, it updates the `resultsState` to indicate that a search is in progress
-     * and then fetches books from the repository using the provided query. The `resultsState`
-     * is updated again with the results of the search operation.
+     * This function initiates an asynchronous search operation within the ViewModel's scope.
      *
-     * @param query The search query string.
+     * - If the `query` is empty, the function returns immediately without performing a search.
+     * - Otherwise, it updates `resultsState` to indicate that a search is in progress (`loading = true`).
+     * - It then calls the `repository.getBooks(query)` function to fetch books matching the query.
+     * - The `resultsState` is then updated with the result from the repository call, which includes
+     *   the fetched data (or null if an error occurred), the loading state (which will be false upon completion
+     *   by the repository), and any exception (`e`) that might have occurred during the repository call.
+     * - If an exception occurs directly within this function's try block (e.g., during the repository call itself),
+     *   `resultsState` is updated to reflect that the loading is complete (`loading = false`),
+     *   the data is null, and the caught exception (`e`) is stored.
+     *
+     * @param query The string to search for in book titles, authors, etc.
      */
     fun searchBooks(query: String) {
         viewModelScope.launch {
             if (query.isEmpty()) return@launch
             resultsState.value = DataOrException(loading = true)
-            resultsState.value = repository.getBooks(query)
+            try {
+                val result = repository.getBooks(query)
+                resultsState.value =
+                    DataOrException(data = result.data, loading = false, e = result.e)
+            } catch (e: Exception) {
+                resultsState.value = DataOrException(data = null, loading = false, e = e)
+            }
         }
     }
 }
