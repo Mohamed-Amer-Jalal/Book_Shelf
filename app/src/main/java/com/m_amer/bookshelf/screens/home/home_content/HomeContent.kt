@@ -1,7 +1,6 @@
 package com.m_amer.bookshelf.screens.home.home_content
 
 import android.content.Intent
-import android.graphics.Bitmap
 import android.util.Log
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.PickVisualMediaRequest
@@ -45,7 +44,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
-import coil.compose.AsyncImage
+import coil3.Bitmap
+import coil3.compose.AsyncImage
 import com.m_amer.bookshelf.R
 import com.m_amer.bookshelf.model.Book
 import com.m_amer.bookshelf.screens.home.categories.Categories

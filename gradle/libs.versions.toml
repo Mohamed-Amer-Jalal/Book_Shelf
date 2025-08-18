@@ -36,7 +36,7 @@ ktor = "3.2.3"
 kotlinxCoroutines = "1.10.2"
 
 # Coil (image loading)
-coilCompose = "2.7.0"
+coilCompose = "3.3.0"
 
 # Testing
 junit = "4.13.2"
@@ -100,7 +100,7 @@ kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-c
 kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinxCoroutines" }
 
 # Coil
-coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
+coil3-coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilCompose" }
 
 # Other runtime libs
 transport-runtime = { group = "com.google.android.datatransport", name = "transport-runtime", version.ref = "transportRuntime" }
